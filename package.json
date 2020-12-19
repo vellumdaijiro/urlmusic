@@ -1,0 +1,54 @@
+{
+  "name": "urlmusic",
+  "version": "1.0.0",
+  "description": "music app",
+  "main": "index.js",
+  "scripts": {
+    "test": "electron .",
+    "build:linux": "node_modules/.bin/electron-builder -l",
+    "build:windows": "node_modules/.bin/electron-builder -w",
+    "build:mac": "node_modules/.bin/electron-builder -m"
+  },
+  "repository": "github:xxx/xxx",
+  "build": {
+    "win": {
+      "icon": "icon.png",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false,
+      "menuCategory": true,
+      "allowElevation": false
+    },
+    "linux": {
+      "icon": "icon.png",
+      "category": "Utility",
+      "target": [
+        "AppImage"
+      ]
+    },
+    "mac": {
+      "icon": "icon.png",
+      "type": "development",
+      "category": "public.app-category.developer-tools",
+      "target": [
+        "dmg"
+      ]
+    }
+  },
+  "keywords": [],
+  "author": "vellumDaijiro",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^5.0.13",
+    "electron-builder": "^22.8.0",
+    "fontawesome": "^5.6.3",
+    "vue": "^2.6.12"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0"
+  }
+}

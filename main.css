@@ -1,0 +1,284 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+*::selection {
+  display: none;
+}
+body {
+  background: #eee;
+  background-size: cover;
+}
+body::-webkit-scrollbar-track {
+  width: 5 px;
+  background: none;
+  z-index: -1;
+}
+body::-webkit-scrollbar-thumb {
+  width: 5px;
+  border-radius: 100px;
+  background: #0078D7;
+  z-index: -1;
+}
+body::-webkit-scrollbar {
+  width: 5px;
+  background: #ccc;
+  z-index: -1;
+}
+#app {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 20vh 0;
+}
+.loaderActiveButton {
+  position: fixed;
+  left: 0;
+  top: 10%;
+  padding: 0 15px;
+  width: 20px;
+  height: 200px;
+  background: #0078D7;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: #000 0 0 10px 0;
+}
+#title {
+  background: #0078D7;
+  height: 50px;
+  width: 100%;
+  color: #fff;
+  box-sizing: border-box;
+  padding: 5px 50px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#dataloader {
+  background: #eee;
+  width: 80%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid #ddd 10px;
+  box-sizing: border-box;
+  color: #bbb;
+  font-size: 2rem;
+  z-index: 3;
+}
+#playlist .playlist.Title .index.Title:hover {
+  background: #0078D7;
+  color: #fff;
+}
+#playlist .playlist.Title:hover {
+  background: #fff;
+  color: #000;
+}
+#playlist li span {
+  display: block;
+}
+#playlist li .index.Title,
+#playlist li .index {
+  width: 40px;
+  text-align: center;
+}
+#playlist li .name.Title,
+#playlist li .name {
+  width: 500px;
+}
+#playlist li .creator.Title,
+#playlist li .creator {
+  width: 350px;
+}
+#playlist li:nth-child(even) {
+  background: #fff;
+}
+#playlist li {
+  box-sizing: border-box;
+  padding: 3px 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: none;
+}
+#playlist li:hover {
+  background: #0078D7;
+  color: #fff;
+}
+#playlist {
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #eee;
+  top: 21vh;
+  width: 87vw;
+  position: absolute;
+  right: 1vh;
+  border: solid #000 1px;
+}
+#player:focus {
+  border: none;
+}
+#player {
+  width: 70%;
+  border-radius: 10000px;
+  outline: none;
+  box-shadow: 
+    #aaa 10px 10px 10px -9px,
+    #fff -10px -10px 10px -9px
+  ;
+}
+.switchButton {
+  border-radius: 10px;
+  height: 80%;
+  width: 10vh;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ededed;
+  cursor: pointer;
+  box-shadow: 
+    #aaa 10px 10px 10px -9px,
+    #fff -10px -10px 10px -9px
+  ;
+  position: absolute;
+}
+#back {
+  right: 5%;
+}
+#next {
+  left: 5%;
+}
+#toolsBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: #eee;
+  z-index: 1000;
+  border-bottom: #000 solid 1px;
+  flex-wrap: wrap;
+}
+#playlistBar::before {
+  content: "";
+  display: block;
+  background: #eee;
+  background-size: cover;
+  height: 1000%;
+  width: 1000%;
+  position: fixed;
+  top: -100px;
+  left: 0;
+  z-index: -1;
+  filter: blur(10px);
+  margin: -20px;
+}
+#playlistBar {
+  background: #0078D7dd;
+  list-style: none;
+  color: #fff;
+  box-sizing: border-box;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap; */
+  z-index: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  position: fixed;
+  width: 10vw;
+  height: 90vh;
+  top: 21vh;
+  left: 1vh;
+  border: solid #000 1px;
+}
+#playlistBar .title {
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  background: #0078D7;
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 10px 0;
+}
+#playlistBar li {
+  background: #0078D7;
+  color: #eee;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 90%;
+  min-height: 20px;
+  height: 30px;
+  margin: 15px auto;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.currentMusicName {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.currentMusicName .crearor{
+  width: 60%;
+  height: 20px;
+  font-size: 15px;
+  display: block;
+  text-align: center;
+  overflow: hidden;
+}
+.currentMusicName .name{
+  width: 60%;
+  height: 5vh;
+  display: block;
+  font-size: 2rem;
+  text-align: center;
+  overflow: hidden;
+}
+#app #playlist .active {
+  background: #0078D7;
+  color: #fff;
+}
+#offline {
+  background: #ddde;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+}
+#offline span {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#offline span h2 {
+  font-size: 2.5rem;
+  color: #aaa;
+}
+#offline h1 {
+  width: 60%;
+  height: 50%;
+  text-align: center;
+  color: #0078D7;
+  font-size: 3rem;
+}

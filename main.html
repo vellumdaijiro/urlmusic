@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="shortcut icon" href="./URLmusic.svg" type="image/x-icon">
+  <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="main.css">
+  <title>URLmusic</title>
+</head>
+<body>
+  <div id="app">
+    <!-- <div class="loaderActiveButton" @click="loaderActive = !loaderActive">点我加载歌单</div>
+    <div @drop.stop="getData" @dragover.prevent id="dataloader" v-show="loaderActive">
+      <p>
+        把歌单拖到这里
+      </p>
+    </div> -->
+    <div id="online" v-show="isOnline">
+      <ul id="playlistBar">
+        <h1 class="title">我的歌单</h1>
+        <li v-for="(data, index) in playlistList" @click="getPlaylist(data); playlistNumber = index">{{data.name}}</li>
+      </ul>
+      <ul id="playlist">
+        <h1 id="title">{{playlistName}}</h1>
+        <li class="playlist Title">
+          <span class="index Title" v-on:click="playlist.reverse()">
+            <i class="fa fa-caret-up" aria-hidden="true"></i>
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </span>
+          <span class="name Title">歌曲</span>
+          <span class="creator Title">作者</span>
+        </li>
+        <li v-for="(object, index) in playlist" :class="index==playNumber?'active':''" @click="switchMusic(index)">
+          <span class="index" v-show="!(index==playNumber)">{{index+1}}.</span>
+          <span class="index" v-show="index==playNumber">
+            <i class="fa fa-volume-up" aria-hidden="true"></i>
+          </span>
+          <span class="name">{{object.name}}</span>
+          <span class="creator">{{object.creator}}</span>
+        </li>
+      </ul>
+      <div id="toolsBar">
+        <div class="currentMusicName">
+          <p class="name">{{playlist[playNumber].name}}</p>
+          <p class="crearor">{{playlist[playNumber].creator}}</p>
+        </div>
+        <div id="next" @click="back()" class="switchButton">
+          <i class="fa fa-caret-left" aria-hidden="true"></i>
+        </div>
+        <audio :src="playlist[playNumber].url" @ended="next()" @error="next()" id="player" controls="controls"></audio>
+        <div id="back" @click="next()" class="switchButton">
+          <i class="fa fa-caret-right" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    <div id="offline" v-show="!isOnline">
+      <i class="fa fa-chain-broken" aria-hidden="true" style="font-size: 20rem;color: #aaa;"></i>
+      <span>
+        <h2>当前状态离线</h2>
+        <h1>请接入互联网</h1>
+      </span>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
